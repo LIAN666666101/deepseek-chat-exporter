@@ -477,3 +477,7 @@ Edge 在扩展详情页会显示本插件「可读取和更改 chat.deepseek.com
 **轮次之间的 `---` 分隔线可以去掉吗？**
 （仅影响 Markdown 文件）
 可以：删掉 `src/content/markdown.js` 中 `buildMarkdown` 里那一行 `lines.push('---')`（位于每轮末尾），重新加载扩展即可，正文格式不受影响。
+
+## 作者说明
+项目发起 & 产品设计：LIAN666666101、yyuu
+开发与持续维护：LIAN666666101
