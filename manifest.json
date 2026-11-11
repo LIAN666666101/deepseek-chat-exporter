@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "DeepSeek 对话导出 Markdown",
+  "version": "1.5.8",
+  "description": "在 chat.deepseek.com 一键把当前对话导出为 Markdown / PDF / Word，可内嵌用户上传的图片与 Mermaid 图表，支持按消息编号区间选择性导出，分支序号随角色标题导出，可选排除思考过程。解析与生成全部在本地完成，不上传任何数据。",
+  "permissions": [],
+  "host_permissions": [],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.deepseek.com/*"
+      ],
+      "js": [
+        "src/content/zip.js",
+        "src/content/md-parse.js",
+        "src/content/html-to-md.js",
+        "src/content/markdown.js",
+        "src/content/image-extractor.js",
+        "src/content/mermaid-capture.js",
+        "src/content/docx.js",
+        "src/content/pdf-doc.js",
+        "src/content/api-extractor.js",
+        "src/content/dom-extractor.js",
+        "src/content/long-capture.js",
+        "src/content/select-ui.js",
+        "src/content/content.js"
+      ],
+      "css": [
+        "src/content/content.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

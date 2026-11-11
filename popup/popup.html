@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>导出 DeepSeek 对话</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="hd">
+    <div class="hd-title">
+      <span class="logo"></span>
+      <span>DeepSeek → Markdown</span>
+    </div>
+    <button id="btn-diag" class="ghost" title="查看页面结构识别结果">诊断</button>
+  </header>
+
+  <div id="banner" class="banner">正在检测当前页面…</div>
+
+  <main class="body">
+    <section class="group">
+      <div class="group-label">思考过程</div>
+      <div class="seg" id="seg-thinking" role="radiogroup">
+        <button type="button" data-v="exclude">排除所有思考过程</button>
+        <button type="button" data-v="collapse">保留为折叠块</button>
+        <button type="button" data-v="plain">混在正文中</button>
+      </div>
+      <p class="hint" id="think-hint">已开启：深度思考 / 推理过程 不写入 Markdown。</p>
+    </section>
+
+    <section class="group">
+      <div class="group-label">其他内容</div>
+      <label class="row">
+        <input type="checkbox" id="opt-tool" />
+        <span>排除联网搜索 / 工具调用卡片</span>
+      </label>
+      <label class="row">
+        <input type="checkbox" id="opt-meta" />
+        <span>在文件开头附加元信息</span>
+      </label>
+      <label class="row">
+        <input type="checkbox" id="opt-roles" />
+        <span>为每条消息添加「用户 / DeepSeek」标题</span>
+      </label>
+      <label class="row">
+        <span class="row-k">图片</span>
+        <select id="opt-image">
+          <option value="link">保留图片链接</option>
+          <option value="skip">忽略图片</option>
+        </select>
+      </label>
+      <label class="row">
+        <input type="checkbox" id="opt-history" />
+        <span>自动向上滚动加载更早的历史消息</span>
+      </label>
+    </section>
+
+    <section class="actions">
+      <button id="btn-download" class="primary">下载 Markdown</button>
+      <button id="btn-copy" class="secondary">复制到剪贴板</button>
+      <button id="btn-both" class="secondary">下载 .md + .json</button>
+    </section>
+
+    <section id="status" class="status" hidden></section>
+
+    <section id="diag" class="diag" hidden>
+      <div class="diag-head">
+        <span>结构诊断</span>
+        <button id="btn-diag-close" class="ghost">收起</button>
+      </div>
+      <pre id="diag-body"></pre>
+      <p class="hint">
+        如果「消息节点」为 0 或「识别到的块」明显不对，说明 DeepSeek 改版了页面结构，
+        请把这段诊断信息发给开发者以补充适配规则。
+      </p>
+    </section>
+  </main>
+
+  <footer class="ft">
+    全部处理在本机完成 · 不联网 · 不上传任何数据
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

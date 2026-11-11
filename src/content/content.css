@@ -1,0 +1,434 @@
+/*
+ * content.css —— 注入到 chat.deepseek.com 页面的样式
+ *
+ * 隔离策略：所有类名统一 dsmd- 前缀（含宿主 .dsmd-root），
+ * 并对关键属性加 !important，避免与 DeepSeek 自身样式互相干扰；
+ * 不修改页面任何已有元素的样式（不使用全局选择器）。
+ */
+
+.dsmd-root {
+  all: initial;
+  position: fixed;
+  right: 24px;
+  bottom: 108px;
+  z-index: 2147483000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #1f2328;
+  pointer-events: none;
+}
+
+.dsmd-root * {
+  box-sizing: border-box;
+}
+
+.dsmd-root button,
+.dsmd-root input,
+.dsmd-root span,
+.dsmd-root strong,
+.dsmd-root div {
+  font-family: inherit;
+  font-size: inherit;
+  pointer-events: auto;
+}
+
+/* ------------------------------- 悬浮按钮 ------------------------------- */
+
+.dsmd-fab {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 9px 14px !important;
+  margin: 0 !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-radius: 999px !important;
+  background: #4d6bfe !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px rgba(77, 107, 254, 0.35) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease !important;
+  user-select: none !important;
+  white-space: nowrap !important;
+}
+
+.dsmd-fab:hover {
+  background: #3f5cf0 !important;
+  box-shadow: 0 6px 18px rgba(77, 107, 254, 0.45) !important;
+  transform: translateY(-1px) !important;
+}
+
+.dsmd-fab:active {
+  transform: translateY(0) !important;
+}
+
+.dsmd-fab-active {
+  background: #3346c9 !important;
+}
+
+.dsmd-fab svg {
+  display: block !important;
+  flex: 0 0 auto !important;
+}
+
+/* -------------------------------- 面板 -------------------------------- */
+
+.dsmd-panel {
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 48px !important;
+  width: 300px !important;
+  padding: 14px !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18) !important;
+}
+
+.dsmd-hidden {
+  display: none !important;
+}
+
+.dsmd-head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 10px !important;
+  color: #111827 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.dsmd-close {
+  width: 22px !important;
+  height: 22px !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  color: #6b7280 !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+}
+
+.dsmd-close:hover {
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+.dsmd-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 0 8px !important;
+  padding: 6px 8px !important;
+  border-radius: 8px !important;
+  color: #374151 !important;
+  cursor: pointer !important;
+  user-select: none !important;
+}
+
+/* ------------------------------ 导出格式选择 ------------------------------ */
+
+.dsmd-field {
+  margin: 0 0 10px !important;
+  padding: 8px !important;
+  border-radius: 9px !important;
+  background: #f8fafc !important;
+}
+
+.dsmd-field-label {
+  display: block !important;
+  margin-bottom: 6px !important;
+  color: #6b7280 !important;
+  font-size: 12px !important;
+}
+
+.dsmd-formats {
+  display: flex !important;
+  gap: 6px !important;
+}
+
+.dsmd-format {
+  flex: 1 1 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  padding: 7px 4px !important;
+  border: 1px solid #d0d7de !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  color: #374151 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease !important;
+}
+
+.dsmd-format:hover {
+  border-color: #4d6bfe !important;
+}
+
+.dsmd-format input[type="radio"] {
+  width: 13px !important;
+  height: 13px !important;
+  margin: 0 !important;
+  accent-color: #4d6bfe !important;
+  cursor: pointer !important;
+  flex: 0 0 auto !important;
+}
+
+.dsmd-format:has(input:checked) {
+  border-color: #4d6bfe !important;
+  background: #eff4ff !important;
+  color: #3538cd !important;
+}
+
+.dsmd-row:hover {
+  background: #f8fafc !important;
+}
+
+.dsmd-row input[type="checkbox"] {
+  width: 15px !important;
+  height: 15px !important;
+  margin: 0 !important;
+  accent-color: #4d6bfe !important;
+  cursor: pointer !important;
+  flex: 0 0 auto !important;
+}
+
+.dsmd-actions {
+  display: flex !important;
+  gap: 8px !important;
+  margin: 12px 0 10px !important;
+}
+
+.dsmd-primary,
+.dsmd-ghost {
+  flex: 1 1 auto !important;
+  padding: 9px 12px !important;
+  border-radius: 9px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: filter 0.15s ease, background 0.15s ease !important;
+}
+
+.dsmd-primary {
+  border: none !important;
+  background: #4d6bfe !important;
+  color: #fff !important;
+}
+
+.dsmd-primary:hover:not(:disabled) {
+  filter: brightness(1.06) !important;
+}
+
+.dsmd-primary:disabled {
+  opacity: 0.6 !important;
+  cursor: default !important;
+}
+
+.dsmd-ghost {
+  flex: 0 0 84px !important;
+  border: 1px solid #d0d7de !important;
+  background: #fff !important;
+  color: #374151 !important;
+}
+
+.dsmd-ghost:hover {
+  background: #f3f4f6 !important;
+}
+
+.dsmd-status {
+  padding: 8px 10px !important;
+  border-radius: 9px !important;
+  background: #f6f8fa !important;
+  color: #4b5563 !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  max-height: 168px !important;
+  overflow: auto !important;
+}
+
+.dsmd-status-ok {
+  background: #ecfdf3 !important;
+  color: #067647 !important;
+}
+
+.dsmd-status-error {
+  background: #fef3f2 !important;
+  color: #b42318 !important;
+}
+
+.dsmd-status-busy {
+  background: #eff4ff !important;
+  color: #3538cd !important;
+}
+
+/* 导出结束仍有图片未导出：红色常驻提示 + 弹窗，避免静默漏图 */
+.dsmd-warning {
+  margin-top: 8px !important;
+  padding: 8px 10px !important;
+  border: 1px solid #fda29b !important;
+  border-radius: 9px !important;
+  background: #fef3f2 !important;
+  color: #b42318 !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  word-break: break-word !important;
+}
+
+.dsmd-warning[hidden] {
+  display: none !important;
+}
+
+.dsmd-note {
+  margin-top: 8px !important;
+  color: #9ca3af !important;
+  font-size: 11px !important;
+  line-height: 1.5 !important;
+}
+
+/* 深色主题下保持可读 */
+@media (prefers-color-scheme: dark) {
+  .dsmd-panel {
+    background: #1f2430 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #e5e7eb !important;
+  }
+
+  .dsmd-head {
+    color: #f3f4f6 !important;
+  }
+
+  .dsmd-row {
+    color: #d1d5db !important;
+  }
+
+  .dsmd-row:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+  }
+
+  .dsmd-field {
+    background: rgba(255, 255, 255, 0.04) !important;
+  }
+
+  .dsmd-format {
+    background: transparent !important;
+    border-color: rgba(255, 255, 255, 0.16) !important;
+    color: #d1d5db !important;
+  }
+
+  .dsmd-format:has(input:checked) {
+    background: rgba(77, 107, 254, 0.22) !important;
+    border-color: #4d6bfe !important;
+    color: #a5b4fc !important;
+  }
+
+  .dsmd-ghost {
+    background: transparent !important;
+    border-color: rgba(255, 255, 255, 0.16) !important;
+    color: #d1d5db !important;
+  }
+
+  .dsmd-ghost:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  .dsmd-status {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #cbd5e1 !important;
+  }
+
+  .dsmd-status-ok {
+    background: rgba(6, 118, 71, 0.18) !important;
+    color: #6ee7b7 !important;
+  }
+
+  .dsmd-status-error {
+    background: rgba(180, 35, 24, 0.2) !important;
+    color: #fca5a5 !important;
+  }
+
+  .dsmd-status-busy {
+    background: rgba(53, 56, 205, 0.22) !important;
+    color: #a5b4fc !important;
+  }
+
+  .dsmd-close:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #f3f4f6 !important;
+  }
+
+
+  /* ---------- 选择性导出：消息勾选 UI（全部带 ds-exporter-injected 标记） ---------- */
+
+  .ds-exporter-injected.dsmd-sel-host {
+    position: absolute !important;
+    left: -30px !important;
+    top: 10px !important;
+    z-index: 60 !important;
+    display: block !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+  }
+
+  .ds-exporter-injected.dsmd-sel-box {
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0 !important;
+    accent-color: #1d4ed8 !important;
+    cursor: pointer !important;
+  }
+
+  .ds-exporter-injected.dsmd-sel-bar {
+    position: fixed !important;
+    left: 50% !important;
+    bottom: 96px !important;
+    transform: translateX(-50%) !important;
+    z-index: 2147483000 !important;
+    display: flex !important;
+    gap: 10px !important;
+    align-items: center !important;
+    background: #ffffff !important;
+    color: #1f2328 !important;
+    border: 1px solid #d0d7de !important;
+    border-radius: 10px !important;
+    padding: 9px 14px !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18) !important;
+    font-size: 13px !important;
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif !important;
+  }
+
+  .ds-exporter-injected.dsmd-sel-export,
+  .ds-exporter-injected.dsmd-sel-clear {
+    border: 1px solid #d0d7de !important;
+    border-radius: 6px !important;
+    background: #f6f8fa !important;
+    color: #1f2328 !important;
+    padding: 5px 12px !important;
+    font-size: 13px !important;
+    cursor: pointer !important;
+  }
+
+  .ds-exporter-injected.dsmd-sel-export {
+    background: #1d4ed8 !important;
+    border-color: #1d4ed8 !important;
+    color: #ffffff !important;
+  }
+
+  .ds-exporter-injected.dsmd-sel-export:disabled {
+    background: #e5e7eb !important;
+    border-color: #e5e7eb !important;
+    color: #9ca3af !important;
+    cursor: not-allowed !important;
+  }
+}
